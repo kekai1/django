@@ -42,14 +42,21 @@
                Категория: {{ n.category }}
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{n.title}}</h5>
-              <p class="card-text">
-                <img src="{{ n.photo }}">
-                {{ n.content }}</p>
-              <a href="#" class="btn btn-primary">read more...</a>
+              <div class="media">
+                {% if n.photo %}
+
+                <img width="50%" class="mr-3" src="{{ n.photo.url }}">
+                {% endif %}
+                <div class="media-body">
+                  <h4 class="card-title">{{n.title}}</h4>
+                  <p class="card-text">{{ n.content|truncatewords:50 }}</p>
+                  <a href="#" class="btn btn-primary">read more...</a>
+                </div>
+              </div>
+
             </div>
             <div class="card-footer text-muted">
-              {{ n.create_up|date:"d-m-Y H:i:s" }}
+              {{ n.create_up|date:"d-m-Y H:i:s" }}<br>{{ n.create_up|timesince }}
             </div>
           </div>
         {% endfor %}
