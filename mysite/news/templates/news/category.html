@@ -11,6 +11,9 @@
 {% block content %}
      {% for n in news %}
           <div class="card mb-3">
+            <div class="card-header">
+               Категория: <a href="{{ n.category.get_absolute_url }}" class="list-group-item-action">{{ n.category }}</a>
+            </div>
             <div class="card-body">
               <div class="media">
                 {% if n.photo %}
@@ -20,7 +23,7 @@
                 <div class="media-body">
                   <h4 class="card-title">{{n.title}}</h4>
                   <p class="card-text">{{ n.content|truncatewords:50 }}</p>
-                  <a href="#" class="btn btn-primary">read more...</a>
+                  <a href="{{ n.get_absolute_url }}" class="btn btn-primary">Подробнее...</a>
                  </div>
               </div>
 

@@ -1,13 +1,14 @@
 {% load news_tags %}
-{% get_list_categories as categories %}
 
-
+{% comment %}
 <div class="list-group">
   <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Все категории</a>
+  {% get_list_categories as categories %}
   {% for category in categories %}
   <a href="{% url 'category' category.pk %}" class="list-group-item list-group-item-action">{{ category.title }}</a>
   {% endfor %}
 </div>
-
 <br>
+{% endcomment %}
 
+{% show_categories %}
